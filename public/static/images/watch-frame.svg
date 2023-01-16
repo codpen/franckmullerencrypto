@@ -1,0 +1,13 @@
+<svg width="484" height="621" viewBox="0 0 484 621" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M90.74 620.74H398.01C398.01 620.74 416.6 622.07 429.59 589.16C429.59 589.16 553.58 332.02 424.46 22.85C424.46 22.85 416.89 1.03 381.01 0.669995H93.92C93.92 0.669995 69.69 -1.23001 58.45 27.09C47.21 55.41 -65.12 255.56 58.45 593.03C58.45 593.04 67.36 620.74 90.74 620.74Z"
+    fill="url(#watch-frame-gradient)" />
+  <defs>
+    <linearGradient id="watch-frame-gradient" x1="0.95119" y1="310.699" x2="483.211" y2="310.699"
+      gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EBEBEB" />
+      <stop offset="0.5068" stop-color="white" />
+      <stop offset="1" stop-color="#DFDFDF" />
+    </linearGradient>
+  </defs>
+</svg>

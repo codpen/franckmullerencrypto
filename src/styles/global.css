@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html[data-focus-source="initial"] *:focus,
+  html[data-focus-source="key"] *:focus,
+  html[data-focus-source="script"] *:focus {
+    @apply ring-2 z-[1];
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    @apply m-0;
+
+    -webkit-appearance: none;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  html {
+    @apply font-sans bg-black scroll-smooth;
+  }
+
+  .emphasised-link {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .emphasised-link::before,
+  .emphasised-link::after {
+   content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+  }
+
+  .emphasised-link::before {
+    background-color: currentColor;
+    height: 2px;
+    bottom: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .emphasised-link::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: #54b3d6;
+  }
+  
+  .emphasised-link:hover::before,
+  .emphasised-link.active::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+
+  .emphasised-link:hover::after,
+  .emphasised-link.active::after {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .collection swiper-slide {
+    width: calc(100% / 3);
+  }
+
+  .collection .swiper-slide img {
+    max-width: 100%;
+    transition: all 300ms ease-out;
+    transform: scale(.75);
+    transform-origin: center;
+  }
+
+  .collection .swiper-slide.swiper-slide-active img {
+    transform: scale(1);
+  }
+
+  .watch-carousel-pagination .pagination-list > * {
+    position: relative;
+  }
+
+  .watch-carousel-pagination .pagination-list > * > :first-child {
+    display: block;
+    transition: all 300ms ease-out;
+    transform-origin: center;
+    transform: translateY(-5px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateY(-5px);
+      opacity: 0;
+      visibility: hidden;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .watch-carousel-pagination .pagination-list > *.active > :first-child {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    animation: slide-in 300ms;
+  }
+
+  .watch-carousel-pagination .pagination-list > * > :last-child {
+    transition: all 300ms ease-out;
+    transform: scaleX(.2);
+    transform-origin: center;
+  }
+
+  .watch-carousel-pagination .pagination-list > *.active > :last-child {
+    transform: scaleX(1);
+    animation: expand 300ms;
+  }
+
+  @keyframes expand {
+    from {
+      transform: scaleX(.2);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 300ms forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .carousel {
+    --width: 2000;
+    opacity: 0;
+    animation-name: tokens-slide;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes tokens-slide {
+    0% {
+      transform: translateX(calc(var(--width) / 2 * 1px));
+      opacity: 0;
+    }
+    
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    
+    100% {
+      transform: translateX(calc(var(--width) / 2 * -1px));
+      opacity: 0;
+    }
+  }
+}
+
+@layer utilities {
+  @supports (-webkit-touch-callout: none) {
+    .h-screen {
+      height: -webkit-fill-available;
+    }
+
+    .min-h-screen {
+      min-height: -webkit-fill-available;
+    }
+  }
+}

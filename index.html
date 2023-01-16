@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" ></script>
+</head>
+<body>
+  <main>
+    <section style="height: 100vh;"></section>
+    <section id="two">
+      <div class="elem">
+        <div>
+          <img
+            src="https://drive.google.com/uc?export=view&id=1wx3G8XcML7t9hTiE1ioUkLUiqUHkI_AJ"
+            class="img-fluid"
+            alt="Responsive image"
+          ></img>
+        </div>
+      </div>
+    </section>
+    <section style="height: 100vh;"></section>
+  </main>
+
+  <style>
+    #two {
+      height: auto;
+      overflow: hidden;
+      background: linear-gradient(0deg, #69b7bf 25%, #ffe664);
+    }
+
+    .img-fluid {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+  
+  <script>
+    // Add scrollmagic controller
+  let controller = new ScrollMagic.Controller();
+  
+  //------------------
+  //TIMELINE 2
+  //------------------
+  
+  // Add timeline
+  let tl2 = anime.timeline({ autoplay: false });
+  
+  // Add animations
+  let s2a1 = {
+    targets: '#two .elem img',
+    opacity: [0.3,1],
+    scale: [0.5,1],
+    duration: 1000,
+    delay: 0,
+    easing: 'easeInOutSine'
+  };
+  
+  // Add children
+  tl2.add(s2a1)
+  //------------------
+  //SCENE 2
+  //------------------
+  
+  //Add second scrollmagic scene
+  let scene2 = new ScrollMagic.Scene({
+    triggerElement: "#two",
+    duration: 3000,
+    triggerHook: 0,
+  })
+  .on("progress", function (event) {
+    tl2.seek(tl2.duration * event.progress);
+  })
+  .setPin('#two')
+  .addTo(controller);
+  
+  </script>
+</body>
+</html>
+
